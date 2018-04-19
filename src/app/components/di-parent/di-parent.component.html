@@ -1,0 +1,15 @@
+<div class="parent">
+  <p>Parent</p>
+  <form novalidate>
+      <div class="form-group">
+      <input type="text"
+            class="form-control"
+            name="value"
+            [(ngModel)]="service.value"> 
+    </div>
+  </form>
+  <small>view child</small>
+  <app-di-child></app-di-child> 
+  <small>content child</small>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <app-compt-joke
+        *ngFor="let joke of jokes"
+        [joke]="joke">
+        <span class="alert-heading setup">{{joke.setup}}</span>
+        <div class="alert alert-success punchline" role="alert">
+            {{joke.punchline}}
+        </div>
+      </app-compt-joke>
+
+      <app-compt-carousel>
+          <app-compt-carousel-item>
+            <img src="https://unsplash.it/200?image=0" alt="">
+          </app-compt-carousel-item>
+          <app-compt-carousel-item>
+            <img src="https://unsplash.it/200?image=500" alt="">
+          </app-compt-carousel-item>
+          <app-compt-carousel-item>
+            <img src="https://unsplash.it/200?image=600" alt="">
+          </app-compt-carousel-item>
+      </app-compt-carousel>
+    </div>
+
+    <div class="col">
+      <app-compt-life-cycles>
+          <div class="card border-warning mb-3" #contentJoke>
+            <div class="card-body">
+              <h4 class="card-title">Why did the chicken go to the séance?</h4>
+              <p class="card-text text-warning">To get to the other side.</p>
+            </div>
+          </div>
+      </app-compt-life-cycles>
+    </div>
+  </div>
+</div>

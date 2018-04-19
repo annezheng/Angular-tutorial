@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+          <div class="m-t-1 m-l-1">
+            <button class="btn btn-sm btn-primary" (click)='doGET()'>GET</button>
+            <button class="btn btn-sm btn-primary" (click)='doPOST()'>POST</button>
+            <button class="btn btn-sm btn-primary" (click)='doPUT()'>PUT</button>
+            <button class="btn btn-sm btn-primary" (click)='doDELETE()'>DELETE</button>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="m-t-1 m-l-1">
+            <button class="btn btn-sm btn-secondary" (click)='doGETAsPromise()'>As Promise</button>
+            <button class="btn btn-sm btn-secondary" (click)='doGETAsPromiseError()'>Error as Promise</button>
+            <button class="btn btn-sm btn-secondary" (click)='doGETAsObservableError()'>Error as Observable</button>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="m-t-1 m-l-1">
+            <button class="btn btn-sm btn-danger" (click)='doGETWithHeaders()'>With Headers</button>
+          </div>
+      </div>
+
+      <h1>iTunes</h1>
+      <form>
+        <div class="form-group">
+          <input type="search" class="form-control" placeholder="Enter search string" #search>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="doSearch(search.value)">Search (Http&Promise)</button>
+          <button type="button" class="btn btn-primary" (click)="doSearchObs(search.value)">Search (Http&Observables)</button>
+        </div>
+      </form>
+
+      <div class="text-center">
+        <p class="lead" *ngIf="loading">Loading...</p>
+      </div>
+      <ul class="list-group">
+        <div *ngIf="searchObs">
+            <li class="list-group-item" *ngFor="let track of results | async">
+              <img src="{{ track.thumbnail }}" alt="">
+              <a target="_blank" href="{{ track.link }}">
+                  {{ track.name }}
+              </a>
+            </li>
+        </div>
+        <div *ngIf="!searchObs">
+            <li class="list-group-item" *ngFor="let track of itunes.results">
+              <img src="{{ track.thumbnail }}" alt="">
+              <a target="_blank" href="{{ track.link }}">
+                  {{ track.name }}
+              </a>
+            </li>
+        </div>
+      </ul>
+    </div>
+
+    <div class="col">
+      <app-http-reactive-search></app-http-reactive-search>
+    </div>
+  </div>
+</div>

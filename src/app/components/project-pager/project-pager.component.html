@@ -1,0 +1,8 @@
+<button class="btn-sm btn-info" 
+    (click)="previous()"
+    [disabled]="page === 0">&larr; Pevious
+</button>
+<button class="btn-sm btn-info" 
+    (click)="next()"
+    [disabled]="page === totalPages">Next &rarr; 
+</button>

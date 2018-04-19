@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>iTunes</h1>  
+  <form>
+    <div class="form-group">
+      <input type="search" class="form-control" placeholder="Enter search string" #search>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="onSearch(search.value)">Search</button>
+    </div>
+  </form>
+  <br>
+  <div class="text-center">
+    <p class="lead" *ngIf="loading">Loading...</p>
+  </div>
+  <!--NOTE
+    [routerLink]="['/artist', track.artistId]" is absolute path, adds to root path
+    'artist' or './artist' is relative path, adds to current url
+  -->
+  <div class="list-group">
+    <a [routerLink]="['/artist', track.artistId]" class="list-group-item list-group-item-action" *ngFor="let track of itunes.results">
+        <img src="{{ track.thumbnail }}" alt=""> 
+        {{ track.name }} <span class="text-muted">by</span> {{track.artist}}
+    </a>
+  </div>
+</div>

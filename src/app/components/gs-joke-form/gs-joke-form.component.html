@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col">
+      <form novalidate 
+          class="card bg-light mb-3"
+          [formGroup]="myForm" 
+          (ngSubmit)="onSubmitModel()">
+      <div class="card card-block">
+        <div class="card-body">
+          <h4 class="card-title text-primary">Create A Joke</h4>    
+          <h6 class="card-subtitle mb-2 text-muted">Model driven method</h6>
+
+          <div class="form-group">
+            <input type="text" 
+              class="form-control"          
+              placeholder="Enter the summary" 
+              [ngClass]= '{
+                "is-invalid": setup.invalid && (setup.dirty || setup.touched),
+                "is-valid": setup.valid && (setup.dirty || setup.touched)
+              }'
+               formControlName="setup" 
+               required>
+            
+            <div class="invalid-feedback"
+                  *ngIf="setup.errors && (setup.dirty || setup.touched)">
+              <p *ngIf="setup.errors.required">Setup is required</p>
+            </div> 
+          </div>
+
+          <div class="form-group">
+            <input type="text" 
+                  class="form-control" 
+                  placeholder="Enter the details" 
+                  [ngClass]= '{
+                    "is-invalid": punchline.invalid && (punchline.dirty || punchline.touched),
+                    "is-valid": punchline.valid && (punchline.dirty || punchline.touched)
+                  }'                   
+                  formControlName="punchline" 
+                  required>
+            <div class="invalid-feedback"
+              *ngIf="punchline.errors && (punchline.dirty || punchline.touched)">
+              <p *ngIf="punchline.errors.required">Punchline is required</p>
+            </div>           
+          </div>          
+          <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Create</button>
+        </div>  
+      </div>
+    </form>
+  </div>
+
+  <div class="col">
+      <form novalidate 
+          class="card bg-light mb-3"
+          #f="ngForm"
+          (ngSubmit)="onSubmit()">
+      <div class="card card-block">
+        <div class="card-body">
+          <h4 class="card-title text-warning">Create A Joke</h4>    
+          <h6 class="card-subtitle mb-2 text-muted">Template driven method</h6>
+
+          <div class="form-group">
+            <input type="text" 
+              class="form-control"          
+              placeholder="Enter the summary" 
+              [ngClass]= '{
+                "is-invalid": setup.invalid && (setup.dirty || setup.touched),
+                "is-valid": setup.valid && (setup.dirty || setup.touched)
+              }' 
+              name="setup"
+              [(ngModel)]="model.setup"
+              required
+              #setup="ngModel"> 
+            
+            <div class="invalid-feedback"
+                  *ngIf="setup.errors && (setup.dirty || setup.touched)">
+              <p *ngIf="setup.errors.required">Setup is required</p>
+            </div> 
+          </div>
+
+          <div class="form-group">
+            <input type="text" 
+                  class="form-control" 
+                  placeholder="Enter the details" 
+                  [ngClass]= '{
+                    "is-invalid": punchline.invalid && (punchline.dirty || punchline.touched),
+                    "is-valid": punchline.valid && (punchline.dirty || punchline.touched)
+                  }' 
+                  name="punchline" 
+                  [(ngModel)]="model.punchline"
+                  required
+                  #punchline="ngModel"> 
+            <div class="invalid-feedback"
+              *ngIf="punchline.errors && (punchline.dirty || punchline.touched)">
+              <p *ngIf="punchline.errors.required">Punchline is required</p>
+            </div>           
+          </div>
+          <!-- <button type="button" class="btn btn-primary" (click)="createJoke(setup.value, punchline.value)" [disabled]="f.invalid">Create</button>   -->          
+          <button type="submit" class="btn btn-warning" [disabled]="f.invalid">Create</button>  
+        </div>  
+      </div>
+    </form>
+  </div>
+</div>
+

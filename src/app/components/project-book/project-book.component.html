@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="text-center">
+        <h3 class="card-title ">{{title}}</h3>
+        <h5 class="card-text" *ngFor="let category of categories">
+          <span class="badge badge-pill badge-info"> {{ category }}</span>
+        </h5>
+        <a target="blank" href="{{previewLink}}" ><img class="card-img-top" src="{{thumbnail}}" alt=""></a>
+      </div>
+      <br>
+      <div class="card-text">
+        <p class="card-text" [innerHTML]="description"></p>
+
+        <div><strong>Authors: </strong> {{authors}}</div>
+        <div><strong>Published Date: </strong> {{publishedDate}}</div>
+        <div><strong>Publisher: </strong> {{publisher}}</div>
+        <div><strong>Page: </strong> {{pages}}</div>
+
+      </div>
+    </div>
+    <button class="btn"
+            [ngClass]="{
+              'btn-warning': bookIndex > -1,
+              'btn-success': bookIndex === -1
+            }"
+            (click)="addDeleteInLibrary()">
+        {{bookIndex > -1? 'Remove From library' : 'Add To Library'}}</button>
+  </div>
+  <br>
+  <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link"
+          [routerLink]="['/project/search']">Search</a></li>
+        <li class="page-item"><a class="page-link"
+          [routerLink]="['/project/library']">Library</a></li>
+      </ul>
+    </nav>
+</div>

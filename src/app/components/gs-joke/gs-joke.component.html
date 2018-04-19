@@ -1,0 +1,18 @@
+<div class="card bg-light mb-3">
+  <div class="card-body">
+    <h4 class="card-title">{{joke.setup}}</h4>
+    <p class="card-text" [hidden]="joke.hide">{{joke.punchline}}</p>
+    <button class="btn" 
+            [ngClass]="{
+              'btn-warning': joke.hide,
+              'btn-success': !joke.hide
+            }" 
+            (click)="joke.toggle()">
+            {{joke.hide? 'Show Me' : 'Hide Me'}}
+    </button> 
+    <button class="btn btn-info" 
+            (click)="deleteJoke()">
+            Delete
+    </button> 
+  </div> 
+</div>

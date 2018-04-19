@@ -1,0 +1,10 @@
+/* #book{
+    margin: 15px;
+    width: 70%;
+} */
+.card-header{
+    background-color: #D1E751;
+}
+.hoverBorder{
+    border: #239CDE 2px solid;
+}

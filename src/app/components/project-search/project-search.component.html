@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="text-center">
+      <form (ngSubmit)="onSearch()">
+        <div class="form-group">
+          <input type="text"
+            class="form-control"
+            placeholder="Search google books"
+            name="search"
+            [(ngModel)]="term"
+            required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+      <p class="lead" *ngIf="books.loading && books.initialized">Loading...</p>
+      <p class="lead" *ngIf="!books.loading && books.initialized && (books.results?.length === 0)">No results returned</p>
+
+      <div class="row">
+        <div class="card text-center" *ngFor="let book of books.results" >
+            <app-project-search-book [book]="book"></app-project-search-book>
+        </div>
+      </div>
+
+      <div *ngIf="books.results.length > 0">
+        <app-project-pager
+          [page]="books.page"
+          [totalPages]="books.totalPages"
+          (changePage)="books.page = $event">
+        </app-project-pager>
+        <!-- {{books.page}} {{books.totalPages}}- {{books.totalItems}} -->
+      </div>
+  </div>
+</div>

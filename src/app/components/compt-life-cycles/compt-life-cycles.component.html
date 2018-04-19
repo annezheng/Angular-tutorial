@@ -1,0 +1,31 @@
+<app-compt-joke *ngFor="let joke of jokes" [joke]="joke">
+    <span class="alert-heading setup">{{joke.setup}}</span>
+    <div class="alert alert-success punchline" role="alert">
+        {{joke.punchline}}
+    </div>
+</app-compt-joke>
+<button class="btn btn-warning"
+        (click)="addJoke()">
+        Add Joke
+</button>
+<button class="btn btn-danger"
+        (click)="clearJokes()">
+        Clear Joke
+</button> 
+<div class="card">
+  <h1 class="card-header" #header>
+    View Jokes
+  </h1>
+  <app-compt-joke *ngFor="let joke of viewJokes" [joke]="joke">
+      <span class="alert-heading setup">{{joke.setup}}</span>
+      <div class="alert alert-success punchline" role="alert">
+          {{joke.punchline}}
+      </div>
+  </app-compt-joke>
+</div>
+<div class="card">
+  <h1 class="card-header" #header2>
+    Content Jokes
+  </h1>
+  <ng-content></ng-content>
+</div>

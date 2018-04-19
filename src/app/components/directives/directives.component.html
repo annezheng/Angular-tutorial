@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><span class="badge badge-success">Built-in Directives</span></h3>
+
+      <div class="card mb-3"
+           [appDirCcCardHover]="{
+              'querySelector': '.card-title',
+              'includes': 'Switch'
+              }">
+        <div class="card-body">
+          <h4 class="card-title">NgSwitch & NgStyle</h4>
+          <div class="card-text">
+              <ul *ngFor="let person of people"
+              [ngStyle]="{'background-color': getColor(person.country)}"
+                  [style.font-style]="'italic'"
+                  [style.font-size.%]="120"
+                  [ngSwitch]="person.country">
+
+                <li *ngSwitchCase="'UK'"
+                    class="text-success">{{ person.name }} ({{ person.country }})
+                </li>
+                <li *ngSwitchCase="'USA'"
+                    class="text-primary">{{ person.name }} ({{ person.country }})
+                </li>
+                <li *ngSwitchCase="'HK'"
+                    class="text-danger">{{ person.name }} ({{ person.country }})
+                </li>
+                <li *ngSwitchDefault
+                    class="text-warning">{{ person.name }} ({{ person.country }})
+                </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-3"
+          [appDirCcCardHover] = "{
+            'querySelector': '.card-title'
+            }">
+        <div class="card-body">
+          <h4 class="card-title">NgClass</h4>
+          <div class="card-text">
+            <ul >
+              <li *ngFor="let person of people; let i=index" [ngClass]="{
+                'text-primary': person.country === 'UK',
+                'text-success': person.country === 'USA',
+                'text-danger': person.country === 'HK'
+              }"
+              [ngStyle]="{'font-variant': 'small-caps'}">
+              {{i+1}} {{ person.name }} ({{ person.country }})
+              </li>
+            </ul>
+            <p class="lead"
+                [class.text-secondary]="people.length>0"
+                [class.card-header]="people.length>4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, odit!
+            </p>
+          </div>
+          <br>
+          <h5 class="card-title">ngFor & ng-template</h5>
+
+          <div class="card-header">
+            <ng-template ngFor let-person [ngForOf]="people">
+              <div [ngClass]="{
+                'text-primary': person.country === 'UK',
+                'text-success': person.country === 'USA',
+                'text-danger': person.country === 'HK'
+              }"
+              [ngStyle]="{'font-variant': 'small-caps'}">
+              {{ person.name }} ({{ person.country }})
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h4 class="card-title">NgNonBindable</h4>
+          <div class="card-text ">
+              To render the name variable we use this syntax
+              <pre ngNonBindable>{{ name }}</pre>
+          </div>
+
+          <p class="card-text" *ngIf="showName">{{ name }}</p>
+          <ng-template [ngIf]="showName">
+              <p class="card-text">Van Canneyt</p>
+          </ng-template>
+
+          <button class="btn btn-primary"
+              (click)="toggle()">{{showName? 'Hide' : 'Show'}}
+          </button>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Articles</h4>
+          <div class="card-text">
+              <div class="card"
+                  [ngClass]="{
+                    'border-success': article.kind === 'image',
+                    'border-danger': article.kind === 'text'
+                  }"
+                  *ngFor="let article of articles; let i=index"
+                  [style.width.%]="100"
+                  [style.padding.px]="20"
+                  [style.margin-bottom.px]="20"
+                  [appDirCcCardHover]="{
+                    'querySelector': 'h4',
+                    'includes': 'Title'
+                    }" >
+                <h4 class="card-title"
+                    [class.text-success]="article.kind==='image'"
+                    [class.text-danger]="article.kind==='text'"
+                    >
+                    {{article.title}}
+                </h4>
+                <div *ngIf="article.kind==='image'">
+                  <small class="text-muted">{{article.date | date: 'fullDate'}}</small>
+                  <img class="card-img-bottom" [src]="article.content" alt="Card image cap">
+                </div>
+                <div *ngIf="article.kind==='text'">
+                    <div class="card-text">{{article.content}}</div>
+                    <small class="text-muted">{{article.date | date:'longDate'}}</small>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3><span class="badge badge-info">Custome Directives</span></h3>
+      <div class="card mb-3">
+        <div class="card-body">
+          <img [appDirCcRollover]="[
+          'https://unsplash.it/200/300?image=201',
+          'https://unsplash.it/200/300?image=202',
+          'https://unsplash.it/200/300?image=203',
+          'https://unsplash.it/200/300?image=204'
+          ]
+          "/>
+        </div>
+      </div>
+      <br>
+      <h3><span class="badge badge-danger">Rxjs</span></h3>
+      <app-dir-rxjs-form></app-dir-rxjs-form>
+    </div>
+  </div>
+</div>

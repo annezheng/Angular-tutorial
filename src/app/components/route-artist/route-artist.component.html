@@ -1,0 +1,26 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand text-primary" target="_blank" href="{{artist?.artistLinkUrl}}">
+        <strong>{{artist?.artistName}}</strong>
+
+    <span class="badge badge-secondary badge-warning" [ngStyle]="{'margin.px': 10}">  {{artist?.primaryGenreName}}</span>
+    </a>
+    <div class="collapse navbar-collapse">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a [routerLink]="['tracks']" [routerLinkActive]="['active']" class="nav-link">Tracks</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['albums']" [routerLinkActive]="['active']" class="nav-link">Albums</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['videos']" [routerLinkActive]="['active']" class="nav-link">Videos</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+
+  <div class="m-t-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

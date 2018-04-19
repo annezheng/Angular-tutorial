@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item"
+      *ngFor="let video of videos">
+    <img src="{{video.artworkUrl100}}">
+    <a target="_blank"
+        href="{{video.trackViewUrl}}" [ngStyle]="{'padding.px': 10}">{{ video.trackName }}
+    </a>
+    {{ video.trackPrice | currency:'USD'}}
+  </li>
+</ul>
+  

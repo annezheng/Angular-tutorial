@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a [routerLink]="['home']" class="navbar-brand">Asim Angular Tutorial</a>
+  <ul class="nav nav-pills">    
+    <li class="nav-item">
+      <a [routerLink]="['quickstart']" [routerLinkActive]="['active']" class="nav-link">Quickstart</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['components']" [routerLinkActive]="['active']" class="nav-link">Components</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['directives']" [routerLinkActive]="['active']" class="nav-link">Directives & RxJS</a>
+    </li>    
+    <li class="nav-item">
+      <a [routerLink]="['pipes']" [routerLinkActive]="['active']" class="nav-link">Pipes</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['forms']" [routerLinkActive]="['active']" class="nav-link">Forms</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['diproviders']" [routerLinkActive]="['active']" class="nav-link">DI & Providers</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['http']" [routerLinkActive]="['active']" class="nav-link">HTTP</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['routing']" [routerLinkActive]="['active']" class="nav-link">Routing</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['project']" [routerLinkActive]="['active']" class="nav-link">Project</a>
+    </li>
+  </ul>
+</nav>
+<div class="m-t-1">
+  <router-outlet></router-outlet>
+</div>

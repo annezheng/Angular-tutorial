@@ -1,0 +1,14 @@
+<div appProjectCardHover>
+  <div class="card-header">
+      {{ book.title }}
+  </div>
+  <a class="card-body" [routerLink]="['/project/book', book.id]">
+    <h5 class="card-text">
+      <span class="badge badge-pill badge-info"> {{ book.categories }}</span>
+    </h5>
+    <img class="card-img-top" src="{{ book.thumbnail }}" alt="">
+  </a>
+  <div class="card-footer bg-light">
+    By {{book.authors}}   
+  </div>
+</div>

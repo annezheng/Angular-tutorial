@@ -1,0 +1,8 @@
+<app-gs-joke-form (jokeCreated)="addJoke($event)"></app-gs-joke-form>
+<app-gs-joke 
+  *ngFor="let joke of jokes" 
+  [joke]="joke"
+  (jokeDeleted)="deleteJoke($event)">
+</app-gs-joke>
+  
+

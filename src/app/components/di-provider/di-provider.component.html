@@ -1,0 +1,18 @@
+<div class="container">
+  <h5 class="text-primary"><strong>ngModule.providers:</strong>  share state globally</h5>
+  <h5 class="text-success"><strong>component.providers:</strong>  share between itself and all children</h5>
+  <h5 class="text-info"><strong>component.viewProviders:</strong>  share between itself and all view children</h5>
+  <div class="row">
+    <div class="col-xs-6">
+      <app-di-parent>
+        <app-di-child></app-di-child>
+      </app-di-parent>
+    </div>
+    <div class="col-xs-6">
+      <app-di-parent>
+          <app-di-child></app-di-child>
+      </app-di-parent>
+    </div>
+  </div>
+</div>
+
